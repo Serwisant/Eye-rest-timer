@@ -1,0 +1,9 @@
+c:\users\torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Debug\EyeRestTimer.csprojResolveAssemblyReference.cache
+c:\users\torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Debug\EyeRestTimer.Form1.resources
+c:\users\torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Debug\EyeRestTimer.Properties.Resources.resources
+c:\users\torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Debug\EyeRestTimer.csproj.GenerateResource.Cache
+c:\users\torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\bin\Debug\EyeRestTimer.exe.config
+c:\users\torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\bin\Debug\EyeRestTimer.exe
+c:\users\torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\bin\Debug\EyeRestTimer.pdb
+c:\users\torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Debug\EyeRestTimer.exe
+c:\users\torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Debug\EyeRestTimer.pdb
