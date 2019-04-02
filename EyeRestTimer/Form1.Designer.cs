@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timerLabel = new System.Windows.Forms.Label();
             this.timerNumber = new System.Windows.Forms.NumericUpDown();
             this.breakLabel = new System.Windows.Forms.Label();
@@ -36,6 +38,8 @@
             this.alarmFileChooser = new System.Windows.Forms.OpenFileDialog();
             this.alarmFilePathTextBox = new System.Windows.Forms.TextBox();
             this.chooseFileButton = new System.Windows.Forms.Button();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.timerNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.breakNumber)).BeginInit();
             this.SuspendLayout();
@@ -52,9 +56,25 @@
             // timerNumber
             // 
             this.timerNumber.Location = new System.Drawing.Point(130, 13);
+            this.timerNumber.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.timerNumber.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.timerNumber.Name = "timerNumber";
             this.timerNumber.Size = new System.Drawing.Size(140, 20);
             this.timerNumber.TabIndex = 1;
+            this.timerNumber.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.timerNumber.ValueChanged += new System.EventHandler(this.timerNumber_ValueChanged);
             // 
             // breakLabel
             // 
@@ -68,9 +88,25 @@
             // breakNumber
             // 
             this.breakNumber.Location = new System.Drawing.Point(137, 40);
+            this.breakNumber.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.breakNumber.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.breakNumber.Name = "breakNumber";
             this.breakNumber.Size = new System.Drawing.Size(133, 20);
             this.breakNumber.TabIndex = 3;
+            this.breakNumber.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.breakNumber.ValueChanged += new System.EventHandler(this.breakNumber_ValueChanged);
             // 
             // alarmLabel
             // 
@@ -103,6 +139,18 @@
             this.chooseFileButton.Text = "...";
             this.chooseFileButton.UseVisualStyleBackColor = true;
             this.chooseFileButton.Click += new System.EventHandler(this.chooseFileButton_Click);
+            // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // trayIcon
+            // 
+            this.trayIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
+            this.trayIcon.Text = "notifyIcon1";
+            this.trayIcon.Visible = true;
             // 
             // Form1
             // 
@@ -137,6 +185,8 @@
         private System.Windows.Forms.OpenFileDialog alarmFileChooser;
         private System.Windows.Forms.TextBox alarmFilePathTextBox;
         private System.Windows.Forms.Button chooseFileButton;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.NotifyIcon trayIcon;
     }
 }
 
