@@ -1,6 +1,6 @@
 ﻿namespace EyeRestTimer
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         /// Wymagana zmienna projektanta.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.timerLabel = new System.Windows.Forms.Label();
             this.timerNumber = new System.Windows.Forms.NumericUpDown();
             this.breakLabel = new System.Windows.Forms.Label();
@@ -152,7 +152,7 @@
             this.trayIcon.Text = "notifyIcon1";
             this.trayIcon.Visible = true;
             // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -166,7 +166,7 @@
             this.Controls.Add(this.timerLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "EyeTimer";
             ((System.ComponentModel.ISupportInitialize)(this.timerNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.breakNumber)).EndInit();

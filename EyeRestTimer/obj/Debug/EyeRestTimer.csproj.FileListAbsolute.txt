@@ -7,3 +7,5 @@ c:\users\torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\b
 c:\users\torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\bin\Debug\EyeRestTimer.pdb
 c:\users\torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Debug\EyeRestTimer.exe
 c:\users\torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Debug\EyeRestTimer.pdb
+C:\Users\Torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Debug\Interop.WMPLib.dll
+C:\Users\Torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Debug\EyeRestTimer.csproj.ResolveComReference.cache

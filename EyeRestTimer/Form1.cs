@@ -1,48 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EyeRestTimer
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
         private Countdown countdown;
+        private Alarm alarm;
 
-        public Form1()
+        //TODO: "Hold" button
+        //TODO: "Start with windows" setting?
+        //TODO: Disable alarm, just a baloon tip
+
+        public MainWindow()
         {
             InitializeComponent();
 
             countdown = new Countdown();
+            timer.Enabled = true;
+            alarm = new Alarm();
+            countdown.setAlarm(alarm);
         }
 
         private void chooseFileButton_Click(object sender, EventArgs e)
         {
-            alarmFileChooser = new OpenFileDialog();
-            alarmFileChooser.ShowDialog();
+            String filePath = AlarmFileChooser.getFilePath();
 
-            char[] separator = new char[] { '\\' };
-
-            String[] pathTokens = alarmFileChooser.FileName.Split(separator);
-            String filename = pathTokens.Last();
-
-            alarmFilePathTextBox.Text = filename;
-
-            trayIcon.Visible = true;
-            trayIcon.BalloonTipTitle = "Test title";
-            trayIcon.BalloonTipText = filename;
-            trayIcon.ShowBalloonTip(10000, "Test title", filename + " has been choosen!", ToolTipIcon.Info);
+            alarm.setAlarmFile(filePath);
+            alarmFilePathTextBox.Text = filePath;
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             countdown.tickSecond();
-            //TODO: observer?
+            Text = $"Remaining: {countdown.getRemainingTime()} seconds";
         }
 
         private void timerNumber_ValueChanged(object sender, EventArgs e)

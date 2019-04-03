@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EyeRestTimer
+﻿namespace EyeRestTimer
 {
     class Countdown
     {
@@ -14,21 +8,24 @@ namespace EyeRestTimer
         private int breakTime;
         private int currentCountdown;
         private MODE currentMode;
+        private Alarm alarm;
 
         public Countdown()
         {
-            workTime = 20;
+            workTime = 1200; // 20 minutes
             breakTime = 20;
             currentCountdown = workTime;
             currentMode = MODE.WORK;
         }
 
+        public void setAlarm(Alarm alarm)
+        {
+            this.alarm = alarm;
+        }
+
         public void setWorktime(int seconds)
         {
-            if (seconds >= 1)
-                workTime = seconds;
-            else
-                workTime = 1;
+            workTime = normalizeTime(seconds);
 
             if (currentMode == MODE.WORK && currentCountdown > workTime)
                 currentCountdown = workTime;
@@ -36,10 +33,7 @@ namespace EyeRestTimer
 
         public void setBreakLength(int seconds)
         {
-            if (seconds >= 1)
-                breakTime = seconds;
-            else
-                breakTime = 1;
+            breakTime = normalizeTime(seconds);
 
             if (currentMode == MODE.BREAK && currentCountdown > breakTime)
                 currentCountdown = breakTime;
@@ -47,11 +41,13 @@ namespace EyeRestTimer
 
         public void tickSecond()
         {
-            if (currentCountdown >= 0)
+            if (currentCountdown > 0)
                 currentCountdown--;
             else
                 changeModeAndResetCountdown();
         }
+
+        public int getRemainingTime() => currentCountdown;
 
         private void changeModeAndResetCountdown()
         {
@@ -59,11 +55,21 @@ namespace EyeRestTimer
             {
                 currentMode = MODE.BREAK;
                 currentCountdown = breakTime;
+                alarm.play();
             } else
             {
                 currentMode = MODE.WORK;
                 currentCountdown = workTime;
+                alarm.stop();
             }
+        }
+
+        private int normalizeTime(int time)
+        {
+            if (time >= 1)
+                return time;
+            else
+                return 1;
         }
     }
 }
