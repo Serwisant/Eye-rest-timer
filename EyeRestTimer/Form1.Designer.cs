@@ -40,6 +40,8 @@
             this.chooseFileButton = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.playAlarmCheckBox = new System.Windows.Forms.CheckBox();
+            this.HoldButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.timerNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.breakNumber)).BeginInit();
             this.SuspendLayout();
@@ -127,6 +129,7 @@
             // 
             this.alarmFilePathTextBox.Location = new System.Drawing.Point(70, 66);
             this.alarmFilePathTextBox.Name = "alarmFilePathTextBox";
+            this.alarmFilePathTextBox.ReadOnly = true;
             this.alarmFilePathTextBox.Size = new System.Drawing.Size(163, 20);
             this.alarmFilePathTextBox.TabIndex = 5;
             // 
@@ -142,6 +145,7 @@
             // 
             // timer
             // 
+            this.timer.Enabled = true;
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
@@ -152,11 +156,36 @@
             this.trayIcon.Text = "notifyIcon1";
             this.trayIcon.Visible = true;
             // 
+            // playAlarmCheckBox
+            // 
+            this.playAlarmCheckBox.AutoSize = true;
+            this.playAlarmCheckBox.Checked = true;
+            this.playAlarmCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.playAlarmCheckBox.Location = new System.Drawing.Point(116, 96);
+            this.playAlarmCheckBox.Name = "playAlarmCheckBox";
+            this.playAlarmCheckBox.Size = new System.Drawing.Size(154, 17);
+            this.playAlarmCheckBox.TabIndex = 7;
+            this.playAlarmCheckBox.Text = "Play alarm during the break";
+            this.playAlarmCheckBox.UseVisualStyleBackColor = true;
+            this.playAlarmCheckBox.CheckStateChanged += new System.EventHandler(this.playAlarmCheckBox_CheckStateChanged);
+            // 
+            // HoldButton
+            // 
+            this.HoldButton.Location = new System.Drawing.Point(15, 92);
+            this.HoldButton.Name = "HoldButton";
+            this.HoldButton.Size = new System.Drawing.Size(95, 23);
+            this.HoldButton.TabIndex = 8;
+            this.HoldButton.Text = "Pause";
+            this.HoldButton.UseVisualStyleBackColor = true;
+            this.HoldButton.Click += new System.EventHandler(this.HoldButton_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 99);
+            this.ClientSize = new System.Drawing.Size(285, 124);
+            this.Controls.Add(this.HoldButton);
+            this.Controls.Add(this.playAlarmCheckBox);
             this.Controls.Add(this.chooseFileButton);
             this.Controls.Add(this.alarmFilePathTextBox);
             this.Controls.Add(this.alarmLabel);
@@ -165,6 +194,7 @@
             this.Controls.Add(this.timerNumber);
             this.Controls.Add(this.timerLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "EyeTimer";
@@ -187,6 +217,8 @@
         private System.Windows.Forms.Button chooseFileButton;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.NotifyIcon trayIcon;
+        private System.Windows.Forms.CheckBox playAlarmCheckBox;
+        private System.Windows.Forms.Button HoldButton;
     }
 }
 

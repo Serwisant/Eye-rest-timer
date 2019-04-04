@@ -2,13 +2,14 @@
 {
     class Countdown
     {
-        private enum MODE { WORK, BREAK };
+        public enum MODE { WORK, BREAK };
 
         private int workTime;
         private int breakTime;
         private int currentCountdown;
         private MODE currentMode;
         private Alarm alarm;
+        private bool playAlarm;
 
         public Countdown()
         {
@@ -16,6 +17,7 @@
             breakTime = 20;
             currentCountdown = workTime;
             currentMode = MODE.WORK;
+            playAlarm = true;
         }
 
         public void setAlarm(Alarm alarm)
@@ -39,6 +41,11 @@
                 currentCountdown = breakTime;
         }
 
+        public void playAlarmDuringBreak(bool enableAlarm)
+        {
+            playAlarm = enableAlarm;
+        }
+
         public void tickSecond()
         {
             if (currentCountdown > 0)
@@ -49,13 +56,16 @@
 
         public int getRemainingTime() => currentCountdown;
 
+        public Countdown.MODE getCurrentMode() => currentMode;
+
         private void changeModeAndResetCountdown()
         {
             if (currentMode == MODE.WORK)
             {
                 currentMode = MODE.BREAK;
                 currentCountdown = breakTime;
-                alarm.play();
+                if(playAlarm)
+                    alarm.play();
             } else
             {
                 currentMode = MODE.WORK;
