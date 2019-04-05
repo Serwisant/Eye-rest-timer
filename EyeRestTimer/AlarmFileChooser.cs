@@ -2,7 +2,7 @@
 
 namespace EyeRestTimer
 {
-    class AlarmFileChooser
+    public class AlarmFileChooser
     {
         static public String getFilePath()
         {

@@ -1,8 +1,9 @@
 ﻿using System;
+using System.IO;
 
 namespace EyeRestTimer
 {
-    class Alarm
+    public class Alarm
     {
         private String filepath;
         WMPLib.WindowsMediaPlayer alarmPlayer;
@@ -13,9 +14,32 @@ namespace EyeRestTimer
             alarmPlayer = new WMPLib.WindowsMediaPlayer();
         }
 
-        public void setAlarmFile(String filepath)
+        public void tryToSetAlarmFile(String filepath)
         {
             this.filepath = filepath;
+
+            if (isInvalidAlarmFile())
+            {
+                filepath = "";
+                throw new InvalidAlarmFile();
+            }
+                
+            this.filepath = filepath;
+        }
+
+        private bool isInvalidAlarmFile()
+        {
+            return doesntFileExist() || hasFileIncorrectExtension();
+        }
+
+        private bool hasFileIncorrectExtension()
+        {
+            return !filepath.EndsWith(".mp3") && !filepath.EndsWith(".wav") && !filepath.EndsWith(".ogg");
+        }
+
+        private bool doesntFileExist()
+        {
+            return !File.Exists(filepath);
         }
 
         public void play()

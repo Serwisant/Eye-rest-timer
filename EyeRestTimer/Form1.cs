@@ -11,6 +11,8 @@ namespace EyeRestTimer
         //TODO: "Start with windows" setting?
         //TODO: "Continue playing after break" setting?
         //TODO: "Save settings" setting
+        //TODO: Default alarm?
+        //TODO: AlarmFilepath?
 
         public MainWindow()
         {
@@ -35,12 +37,23 @@ namespace EyeRestTimer
         {
             String filePath = AlarmFileChooser.getFilePath();
 
+            if (filePath == "")
+                return;
+
             changeAlarmFile(filePath);
         }
 
         private void changeAlarmFile(String filepath)
         {
-            alarm.setAlarmFile(filepath);
+            try
+            {
+                alarm.tryToSetAlarmFile(filepath);
+            }
+            catch (InvalidAlarmFile)
+            {
+                MessageBox.Show("Invalid alarm file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
             alarmFilePathTextBox.Text = filepath;
         }
 
@@ -50,9 +63,7 @@ namespace EyeRestTimer
 
             changeRemainingTimeText();
             if (changedToBreakTime())
-            {
                 showBaloon();
-            }
         }
 
         private void changeRemainingTimeText()
@@ -95,12 +106,9 @@ namespace EyeRestTimer
             bool isTimerRunning = timer.Enabled;
 
             if (isTimerRunning)
-            {
                 holdCountdown();
-            } else
-            {
+            else
                 resumeCountdown();
-            }
         }
 
         private void holdCountdown()

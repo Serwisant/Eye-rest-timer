@@ -1,6 +1,6 @@
 ﻿namespace EyeRestTimer
 {
-    class Countdown
+    public class Countdown
     {
         public enum MODE { WORK, BREAK };
 
