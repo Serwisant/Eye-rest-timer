@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EyeRestTimer", "EyeRestTimer\EyeRestTimer.csproj", "{947F4899-2525-45FB-9393-5173DC449078}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EyeRestTimerTests", "EyeRestTimerTests\EyeRestTimerTests.csproj", "{DC4E3AFE-EF5F-43B0-9AFC-F8CA7ED1A4AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EyeRestTimerTests", "EyeRestTimerTests1\EyeRestTimerTests.csproj", "{BDE7B91C-E437-456B-9EE1-8714EDD0F702}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{947F4899-2525-45FB-9393-5173DC449078}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{947F4899-2525-45FB-9393-5173DC449078}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{947F4899-2525-45FB-9393-5173DC449078}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC4E3AFE-EF5F-43B0-9AFC-F8CA7ED1A4AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC4E3AFE-EF5F-43B0-9AFC-F8CA7ED1A4AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC4E3AFE-EF5F-43B0-9AFC-F8CA7ED1A4AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC4E3AFE-EF5F-43B0-9AFC-F8CA7ED1A4AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDE7B91C-E437-456B-9EE1-8714EDD0F702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE7B91C-E437-456B-9EE1-8714EDD0F702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE7B91C-E437-456B-9EE1-8714EDD0F702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE7B91C-E437-456B-9EE1-8714EDD0F702}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

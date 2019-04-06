@@ -1,4 +1,6 @@
-﻿namespace EyeRestTimer
+﻿using System;
+
+namespace EyeRestTimer
 {
     public class Countdown
     {
@@ -18,11 +20,19 @@
             currentCountdown = workTime;
             currentMode = MODE.WORK;
             playAlarm = true;
+            alarm = new Alarm();
         }
 
-        public void setAlarm(Alarm alarm)
+        public bool setAlarmFile(String filepath)
         {
-            this.alarm = alarm;
+            return alarm.setAlarmFile(filepath);
+        }
+
+        public String getAlarmFilepath() => alarm.getFilepath();
+
+        public void stopAlarm()
+        {
+            alarm.stop();
         }
 
         public void setWorktime(int seconds)
@@ -41,9 +51,19 @@
                 currentCountdown = breakTime;
         }
 
+        private int normalizeTime(int time)
+        {
+            if (time >= 1)
+                return time;
+            else
+                return 1;
+        }
+
         public void playAlarmDuringBreak(bool enableAlarm)
         {
             playAlarm = enableAlarm;
+            if (enableAlarm == false)
+                alarm.stop();
         }
 
         public void tickSecond()
@@ -51,35 +71,34 @@
             if (currentCountdown > 0)
                 currentCountdown--;
             else
-                changeModeAndResetCountdown();
+                changeMode();
         }
 
         public int getRemainingTime() => currentCountdown;
 
         public Countdown.MODE getCurrentMode() => currentMode;
 
-        private void changeModeAndResetCountdown()
+        private void changeMode()
         {
             if (currentMode == MODE.WORK)
-            {
-                currentMode = MODE.BREAK;
-                currentCountdown = breakTime;
-                if(playAlarm)
-                    alarm.play();
-            } else
-            {
-                currentMode = MODE.WORK;
-                currentCountdown = workTime;
-                alarm.stop();
-            }
+                changeToBreakTime();
+            else if(currentMode == MODE.BREAK)
+                changeToWorkTime();
         }
 
-        private int normalizeTime(int time)
+        private void changeToBreakTime()
         {
-            if (time >= 1)
-                return time;
-            else
-                return 1;
+            currentMode = MODE.BREAK;
+            currentCountdown = breakTime;
+            if (playAlarm)
+                alarm.play();
+        }
+
+        private void changeToWorkTime()
+        {
+            currentMode = MODE.WORK;
+            currentCountdown = workTime;
+            alarm.stop();
         }
     }
 }

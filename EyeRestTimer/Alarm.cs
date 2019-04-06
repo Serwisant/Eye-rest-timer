@@ -14,17 +14,18 @@ namespace EyeRestTimer
             alarmPlayer = new WMPLib.WindowsMediaPlayer();
         }
 
-        public void tryToSetAlarmFile(String filepath)
+        public bool setAlarmFile(String filepath)
         {
             this.filepath = filepath;
+            bool success = true;
 
             if (isInvalidAlarmFile())
             {
-                filepath = "";
-                throw new InvalidAlarmFile();
+                this.filepath = "";
+                success = false;
             }
-                
-            this.filepath = filepath;
+
+            return success;
         }
 
         private bool isInvalidAlarmFile()
@@ -40,6 +41,11 @@ namespace EyeRestTimer
         private bool doesntFileExist()
         {
             return !File.Exists(filepath);
+        }
+
+        public String getFilepath()
+        {
+            return filepath;
         }
 
         public void play()

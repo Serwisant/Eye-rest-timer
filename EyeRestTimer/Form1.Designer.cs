@@ -155,6 +155,7 @@
             this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
             this.trayIcon.Text = "notifyIcon1";
             this.trayIcon.Visible = true;
+            this.trayIcon.DoubleClick += new System.EventHandler(this.trayIcon_DoubleClick);
             // 
             // playAlarmCheckBox
             // 
@@ -198,6 +199,7 @@
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "EyeTimer";
+            this.SizeChanged += new System.EventHandler(this.MainWindow_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.timerNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.breakNumber)).EndInit();
             this.ResumeLayout(false);

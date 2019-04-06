@@ -6,7 +6,6 @@ namespace EyeRestTimer
     public partial class MainWindow : Form
     {
         private Countdown countdown;
-        private Alarm alarm;
         
         //TODO: "Start with windows" setting?
         //TODO: "Continue playing after break" setting?
@@ -18,43 +17,39 @@ namespace EyeRestTimer
         {
             InitializeComponent();
 
-            initializeAlarm();
             initializeCountdown();
-        }
-
-        private void initializeAlarm()
-        {
-            alarm = new Alarm();
         }
 
         private void initializeCountdown()
         {
             countdown = new Countdown();
-            countdown.setAlarm(alarm);
         }
 
         private void chooseFileButton_Click(object sender, EventArgs e)
         {
             String filePath = AlarmFileChooser.getFilePath();
 
-            if (filePath == "")
-                return;
-
             changeAlarmFile(filePath);
         }
 
         private void changeAlarmFile(String filepath)
         {
-            try
-            {
-                alarm.tryToSetAlarmFile(filepath);
-            }
-            catch (InvalidAlarmFile)
-            {
-                MessageBox.Show("Invalid alarm file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
-            alarmFilePathTextBox.Text = filepath;
+            bool failureOfSettingAlarmFile = !countdown.setAlarmFile(filepath);
+
+            if (failureOfSettingAlarmFile)
+                showInvalidAlarmFileError();
+
+            setAlarmTextBox();
+        }
+
+        private void showInvalidAlarmFileError()
+        {
+            MessageBox.Show("Invalid alarm file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void setAlarmTextBox()
+        {
+            alarmFilePathTextBox.Text = countdown.getAlarmFilepath();
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -115,13 +110,46 @@ namespace EyeRestTimer
         {
             timer.Enabled = false;
             HoldButton.Text = "Resume";
-            alarm.stop();
+            countdown.stopAlarm();
         }
 
         private void resumeCountdown()
         {
             timer.Enabled = true;
             HoldButton.Text = "Hold";
+        }
+
+        private void MainWindow_SizeChanged(object sender, EventArgs e)
+        {
+            if (isWindowMinimized())
+                minimizeToTray();
+            else if (isWindowNormal())
+                restoreWindow();
+        }
+
+        private bool isWindowMinimized()
+        {
+            return WindowState == FormWindowState.Minimized;
+        }
+
+        private void minimizeToTray()
+        {
+            ShowInTaskbar = false;
+        }
+
+        private bool isWindowNormal()
+        {
+            return WindowState == FormWindowState.Normal;
+        }
+
+        private void restoreWindow()
+        {
+            ShowInTaskbar = true;
+        }
+
+        private void trayIcon_DoubleClick(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Normal;
         }
     }
 }

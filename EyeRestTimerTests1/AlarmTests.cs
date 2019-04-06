@@ -11,28 +11,45 @@ namespace EyeRestTimer.Tests
     [TestClass()]
     public class AlarmTests
     {
+        private String dummyAlarmFilepath = @"\Test.mp3";
+        private String currentDirectory = System.IO.Directory.GetCurrentDirectory();
+        private Alarm alarm;
+
         [TestMethod()]
-        public void AlarmTest()
+        public void setAndGetCorrectFilepathTest()
         {
-            Assert.Fail();
+            String expected = currentDirectory + dummyAlarmFilepath;
+
+            bool success = alarm.setAlarmFile(currentDirectory + dummyAlarmFilepath);
+            String actual = alarm.getFilepath();
+
+            Assert.AreEqual(true, success);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod()]
-        public void tryToSetAlarmFileTest()
+        public void setAndGetInvalidFilepathTest()
         {
-            Assert.Fail();
+            String expected = "";
+
+            bool success = alarm.setAlarmFile(currentDirectory + @"\SOME_NOT_ExisTING_FILE.mp3");
+            String actual = alarm.getFilepath();
+
+            Assert.AreEqual(false, success);
+            Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod()]
-        public void playTest()
+        [TestInitialize]
+        public void prepareObjects()
         {
-            Assert.Fail();
+            System.IO.File.WriteAllText(currentDirectory + dummyAlarmFilepath, "DUMMY FILE");
+            alarm = new Alarm();
         }
 
-        [TestMethod()]
-        public void stopTest()
+        [TestCleanup]
+        public void deleteDummyAlarmFile()
         {
-            Assert.Fail();
+            System.IO.File.Delete(currentDirectory + dummyAlarmFilepath);
         }
     }
 }
