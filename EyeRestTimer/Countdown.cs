@@ -35,7 +35,7 @@ namespace EyeRestTimer
             alarm.stop();
         }
 
-        public void setWorktime(int seconds)
+        public void setWorkLength(int seconds)
         {
             workTime = normalizeTime(seconds);
 
@@ -68,7 +68,7 @@ namespace EyeRestTimer
 
         public void tickSecond()
         {
-            if (currentCountdown > 0)
+            if (currentCountdown > 1)
                 currentCountdown--;
             else
                 changeMode();

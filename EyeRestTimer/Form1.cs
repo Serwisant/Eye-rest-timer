@@ -82,7 +82,7 @@ namespace EyeRestTimer
         private void timerNumber_ValueChanged(object sender, EventArgs e)
         {
             int workTime = (int)timerNumber.Value * 60;
-            countdown.setWorktime(workTime);
+            countdown.setWorkLength(workTime);
         }
 
         private void breakNumber_ValueChanged(object sender, EventArgs e)
