@@ -199,6 +199,7 @@
             this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.Text = "EyeTimer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SaveSettingsOnFormClose);
             this.SizeChanged += new System.EventHandler(this.MainWindow_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.timerNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.breakNumber)).EndInit();

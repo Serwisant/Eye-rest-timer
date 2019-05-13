@@ -8,3 +8,4 @@ C:\Users\Torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\o
 C:\Users\Torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Release\EyeRestTimer.csproj.GenerateResource.Cache
 C:\Users\Torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Release\EyeRestTimer.exe
 C:\Users\Torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Release\EyeRestTimer.pdb
+C:\Users\Torll\documents\visual studio 2017\Projects\EyeRestTimer\EyeRestTimer\obj\Release\EyeRestTimer.csprojResolveAssemblyReference.cache

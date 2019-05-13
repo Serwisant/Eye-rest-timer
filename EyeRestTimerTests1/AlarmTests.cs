@@ -1,12 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
 using EyeRestTimer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EyeRestTimer.Tests
+namespace EyeRestTimerTests1
 {
     [TestClass()]
     public class AlarmTests
@@ -32,7 +28,7 @@ namespace EyeRestTimer.Tests
         {
             String expected = "";
 
-            bool success = alarm.setAlarmFile(currentDirectory + @"\SOME_NOT_ExisTING_FILE.mp3");
+            bool success = alarm.setAlarmFile(currentDirectory + @"\SOME_NOT_Existing_FILE.mp3");
             String actual = alarm.getFilepath();
 
             Assert.AreEqual(false, success);

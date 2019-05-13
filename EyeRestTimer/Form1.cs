@@ -6,23 +6,46 @@ namespace EyeRestTimer
     public partial class MainWindow : Form
     {
         private Countdown countdown;
-        
-        //TODO: "Start with windows" setting?
-        //TODO: "Continue playing after break" setting?
-        //TODO: "Save settings" setting
-        //TODO: Default alarm?
-        //TODO: AlarmFilepath?
 
         public MainWindow()
         {
             InitializeComponent();
 
             initializeCountdown();
+
+            restoreSettings();
         }
 
         private void initializeCountdown()
         {
             countdown = new Countdown();
+        }
+
+        private void restoreSettings()
+        {
+            SettingsSaver ss = new SettingsSaver();
+
+            int savedBreakLength = ss.getBreakLength();
+            int savedWorkLength = ss.getWorkLength();
+            String savedAlarmPath = ss.getAlarmPath();
+
+            if(savedBreakLength > 0)
+            {
+                countdown.setBreakLength(savedBreakLength);
+                breakNumber.Value = savedBreakLength;
+            }
+
+            if(savedWorkLength > 0)
+            {
+                countdown.setWorkLength(savedWorkLength * 60);
+                timerNumber.Value = savedWorkLength;
+            }
+
+            if(savedAlarmPath != "")
+            {
+                countdown.setAlarmFile(savedAlarmPath);
+                alarmFilePathTextBox.Text = savedAlarmPath;
+            }
         }
 
         private void chooseFileButton_Click(object sender, EventArgs e)
@@ -150,6 +173,17 @@ namespace EyeRestTimer
         private void trayIcon_DoubleClick(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Normal;
+        }
+
+        private void SaveSettingsOnFormClose(object sender, FormClosingEventArgs e)
+        {
+            SettingsSaver ss = new SettingsSaver();
+
+            ss.setBreakLength(int.Parse(breakNumber.Value.ToString()));
+            ss.setWorkLength(int.Parse(timerNumber.Value.ToString()));
+            ss.setAlarmPath(alarmFilePathTextBox.Text.ToString());
+
+            ss.saveSettings();
         }
     }
 }
